@@ -57,39 +57,12 @@ To prove the efficiency of structural optimization, two configurations were eval
 ## 📊 Power BI Business Intelligence Interface
 The final XGBoost model predictions were combined back with the clean, human-readable text layer to create a dual-perspective report tailored for business leaders.
 
-### 1. Advanced DAX Measures Built
-*   **Total Operations Volume:**
-    ```dax
-    Total Flights = COUNT('flight_demand_bi_ready'[Flight_ID])
-    ```
-*   **Fleet Efficiency Metric:**
-    ```dax
-    Avg Load Factor = AVERAGE('flight_demand_bi_ready'[Load_Factor_Pct])
-    ```
-*   **Live Machine Learning Audit:**
-    ```dax
-    Model Accuracy % = 
-    DIVIDE(
-        CALCULATE(COUNT('flight_demand_bi_ready'[Flight_ID]), 'flight_demand_bi_ready'[Model_Correct] = TRUE()),
-        [Total Flights],
-        0
-    )
-    ```
+
 
 ### 2. Dashboard Layout Architecture
 *   **Tab 1: Commercial Optimization View:** Displays executive KPI cards (`Total Flights`, `Avg Load Factor`) alongside a clustered bar chart of underperforming routes, a promotional donut chart highlighting passenger volume generation, and a dual-axis line chart matching monthly occupancy changes against volatile fuel pricing trends.
 *   **Tab 2: Model Monitoring & Validation Panel:** Displays a prominent live model accuracy card. It also uses a Power BI Matrix Visual with actual `Demand` on the rows and `Predicted_Demand` on the columns. This recreates an interactive **Confusion Matrix** directly within the report interface, allowing business analysts to verify where the model is making errors.
 
----
 
-## 📂 Repository Layout
-```text
-├── data/
-│   ├── raw_flights.csv               # Original flight dataset
-│   └── flight_demand_bi_ready.csv    # Final clean output with XGBoost predictions
-├── notebooks/
-│   └── pipeline_and_modeling.ipynb   # Complete Python pipeline code
-├── dashboard/
-│   └── flight_analytics_report.pbix  # Completed Power BI workbook file
-└── README.md                         # Portfolio documentation
-```
+
+
